@@ -2641,6 +2641,7 @@ function formFields(form){
 
 function setSuccessState(form){
   const btn=form.querySelector('button');
+  const origText=btn&&btn.textContent;
   btn&&(btn.textContent='Thank For Your Response');
   btn&&(btn.style.background='rgba(0,255,163,0.2)');
   btn&&(btn.style.borderColor='rgba(0,255,163,0.3)');
@@ -2649,14 +2650,14 @@ function setSuccessState(form){
   const note=form.querySelector('.c-note');
   if(note)note.textContent='We will be in touch within 48 hours.';
   setTimeout(()=>{
+    form.querySelectorAll('input,select,textarea').forEach(i=>i.disabled=false);
     btn&&(btn.textContent='Send Inquiry');
     btn&&(btn.style.background='');
     btn&&(btn.style.borderColor='');
     btn&&(btn.style.color='');
     btn&&(btn.disabled=false);
-    form.querySelectorAll('input,select,textarea').forEach(i=>i.disabled=false);
     if(note)note.textContent='Direct founder-led responses for serious enterprise and strategic inquiries.';
-  },4000);
+  },3000);
 }
 
 function validateForm(form,emailEl){
